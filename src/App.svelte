@@ -20,7 +20,8 @@
   <title>QUIZAPP</title>
 </svelte:head>
 
-<main>
+<main class="flex flex-col min-h-screen">
+  <div class="wholebody" />
   <div class="containerrr">
     <div class="navhead font-serif">
       <Navbar let:hidden let:toggle>
@@ -36,28 +37,20 @@
             <a href="/">QuizApp</a>
           </span>
         </NavBrand>
-        <NavHamburger on:click={toggle} />
+        <!-- <NavHamburger on:click={toggle} />
         <NavUl {hidden}>
           <NavLi href="/" active={true}>Home</NavLi>
-        </NavUl>
+        </NavUl> -->
       </Navbar>
     </div>
 
-    <div class="slotbody bg-black">
+    <div class="slotbody md:mx-10 flex-grow">
       <Question />
     </div>
   </div>
-  <div class="empty" />
-  <div class="navfoter font-serif">
+  <div class="font-serif mt-auto">
     <Footer>
       <FooterCopyright href="/" by="Quizapp" year={2022} />
-      <!-- <FooterLinkGroup
-        class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
-      >
-        <FooterLink>
-          <a href="/" class="mr-4 hover:underline md:mr-6">Home</a>
-        </FooterLink>
-      </FooterLinkGroup> -->
     </Footer>
   </div>
 </main>
@@ -66,39 +59,49 @@
   :global(html) {
     background-color: theme(colors.blue.300);
   }
+  main {
+    background: linear-gradient(to right, #2e94f3, #fd7d74);
+  }
 
-  .containerr {
+  .containerrr {
     /* background-color: #000; */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
   }
   .slotbody {
-    background: linear-gradient(to right, #2e94f3, #ff8822);
+    background: linear-gradient(to right, #2e94f3, #fd7d74);
     background-size: cover;
     background-position: center;
-    min-height: 89vh;
+    /* min-height: 89vh; */
+    /* height: 100%; */
   }
   @media screen and (max-width: 768px) {
     .slotbody {
       min-height: 78.5vh;
-      background: linear-gradient(to right, #2e94f3, #ff8822);
+      background: linear-gradient(to right, #2e94f3, #fd7d74);
 
       background-size: cover;
       background-position: center;
-      min-height: 79vh;
+      /* min-height: 79vh; */
+      /* height: 100%; */
+    }
+    .containerrr {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      flex-grow: 1;
     }
   }
   .navhead {
     background-color: #000;
   }
   .navfoter {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     min-width: 100%;
-  }
-  .empty {
-    background: linear-gradient(to right, #2e94f3, #ff8822);
-
-    min-height: 10vh;
   }
 </style>

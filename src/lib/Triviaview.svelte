@@ -1,5 +1,4 @@
 <script>
-  import Marks from "./details/Marks.svelte";
   import Info from "./details/Info.svelte";
   import { tweened } from "svelte/motion";
   import { Alert } from "flowbite-svelte";
@@ -12,7 +11,7 @@
   let check = sendlen;
   let qnum = 0;
   let qno = 0;
-  let original = 60;
+  let original = 5;
   let timedout = 0;
   $: timer = tweened(original);
   let totalTime = 0;
@@ -89,7 +88,7 @@
   }
   //handle the timer reaching 0
   function handleTimerComplete() {
-    corrselans.push("");
+    corrselans.push("noanswer");
     resultans.push(listque[qno]);
 
     qnum = qno;
@@ -110,12 +109,13 @@
   function handleConfirmSkip() {
     qnum = qno;
     noans.push(qnum);
-    corrselans.push("");
+    corrselans.push("noanswer");
     resultans.push(listque[qnum]);
+    console.log(resultans);
     skiper.push(qnum);
 
     if (qno < listque.length - 1) {
-      //   qno++;
+      qno++;
       skipped++;
       resetTimer();
     }
@@ -157,30 +157,30 @@
   }
 </script>
 
-<div class="alertcontainer h-10 w-1/2 mx-20 p-1">
-  <div class="mx-1">
-    {#if showTimeoutAlert}
-      <Alert>
-        <span class="font-medium">Timedout!</span>
-        Previous Question was timed out.
-      </Alert>
-    {/if}
-  </div>
-</div>
-
 <div class=" questions-cat mx-2 md:mx-2">
   {#if listque.length > 0}
     {#if check == 0}
-      <Marks
+      <Result
+        {corrselans}
+        {resultans}
         {obtainedmarks}
         {sendlen}
         {correct}
         {incorrect}
         {skipped}
         {timedout}
-      /> <br />
-      <Result {corrselans} {resultans} />
+      />
     {:else}
+      <div class="alertcontainer h-10 w-1/2 mx-20 p-1">
+        <div class="mx-1">
+          {#if showTimeoutAlert}
+            <Alert>
+              <span class="font-medium">Timedout!</span>
+              Previous Question was timed out.
+            </Alert>
+          {/if}
+        </div>
+      </div>
       <div
         class="grid grid-cols-1 gridans md:grid-cols-[7fr,3fr] gap-4 md:px-10"
       >
@@ -244,7 +244,7 @@
                     value={answer}
                     bind:group={selectedAnswer}
                   />
-                  <p class="text-black">{@html answer}</p>
+                  <p class="text-black font-medium">{@html answer}</p>
                 </label>
               {/each}
             </div>
@@ -318,7 +318,7 @@
                 <div
                   class="border-4 w-10 h-10 flex items-center justify-center rounded-full"
                   style={index <= qno && giveans.includes(index)
-                    ? "background-color: green"
+                    ? "background-color: #68d391"
                     : index <= qno && noans.includes(index)
                     ? "background-color: #fc8181"
                     : "background-color: #c9c8c3"}
