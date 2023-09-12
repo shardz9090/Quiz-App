@@ -1,4 +1,4 @@
-#Quiz App using Svelte + Vite
+# Quiz App using Svelte + Vite
 
 # Svelte + Vite
 
