@@ -28,25 +28,25 @@ To get a local copy of the QuizApp up and running, follow these steps:
 
 1. Clone this repository to your local machine:
 
-```bash
+```console
     git clone https://github.com/shardz9090/Quiz-App.git
 ```
 
 2. Navigate to the project directory:
 
-```bash
+```console
     cd Quiz-app
 ```
 
 3. Install the project dependencies:
 
-```bash
+```console
     npm install
 ```
 
 4. Start the development server:
 
-```bash
+```console
     npm run dev
 ```
 
