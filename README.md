@@ -1,49 +1,70 @@
 # Quiz App using Svelte + Vite
 
-# Svelte + Vite
+Welcome to the QuizApp repository! The Svelte framework and Vite as the build tool were used to create this straightforward quiz application. Users of the QuizApp can take quizzes on a variety of subjects and receive immediate feedback on their responses.
 
-This template should help get you started developing with Svelte in Vite.
+## Question data
 
-## Recommended IDE Setup
+Questions and answers data are fetched from website: [Opentdb](https://opentdb.com/api.php?amount=15&category=9&difficulty=easy&type=multiple)
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Features
 
-## Need an official Svelte framework?
+    - Fetched data from api webite opentdb.com.
+    - Take quizzes on a variety of topics.
+    - Marks based on time spent by user on the question.
+    - User-friendly and responsive design.
+    - Randomized question order for a fresh experience every time.
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+![QuizApp Screenshot](./screenshotquiz.jpg)
 
-## Technical considerations
+## Table of Contents
 
-**Why use this over SvelteKit?**
+- [Getting Started](#getting-started)
+- [Folder Structure](#folder-structure)
+- [Contributing](#contributing)
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+## Getting Started
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+To get a local copy of the QuizApp up and running, follow these steps:
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+    1. Clone this repository to your local machine:
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+    ```bash
+        git clone https://github.com/shardz9090/Quiz-App
+    ```
+    2. Navigate to the project directory:
+    ```bash
+        cd Quiz-app
+        ```
+    3. Install the project dependencies:
+    ```bash
+            npm install
+        ```
+    4. Start the development server:
+    ```bash
+            npm run dev
+        ```
+    5. Open your web browser and go to http://localhost:5173 to view the QuizApp.
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+## Folder Structure
 
-**Why include `.vscode/extensions.json`?**
+The project structure is organized as follows:
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+    - src/: Source code for the QuizApp.
+        - lib/: Svelte components used in the application.
+            - details/ : Svelte Components
+        - App.css
+        - App.svelte: The main Svelte component.
+        - main.js: The entry point for the application.
+        - vite.config.js: Configuration file for Vite.
 
-**Why enable `checkJs` in the JS template?**
+## Contributing
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-**Why is HMR not preserving my local component state?**
+    1. Fork the repository.
+    2. Create a new branch for your feature or bug fix.
+    3. Make your changes and commit them.
+    4. Push your changes to your fork.
+    5. Submit a pull request to the main repository.
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+Thank you for checking out the QuizApp! If you have any questions or encounter any issues, please feel free to open an issue in this repository.
